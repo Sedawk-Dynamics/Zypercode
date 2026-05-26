@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Code2, FileText, Brain, RefreshCcw, ShieldCheck, BarChart3, Headphones } from "lucide-react"
+import { FlipCard } from "@/components/ui/flip-card"
 
 const services = [
   {
@@ -7,6 +8,7 @@ const services = [
     title: "Medical Coding (ICD-10 / CPT / HCC)",
     desc: "Precise inpatient and outpatient coding across all specialties using the latest ICD-10-CM/PCS, CPT, and HCPCS code sets. Our AHIMA/AAPC-certified coders ensure maximum reimbursement with zero compliance risk.",
     tag: "Core Service",
+    tagline: "Certified accuracy across every claim",
     image: "/images/medical-coding-card.jpg",
   },
   {
@@ -14,6 +16,7 @@ const services = [
     title: "Clinical Documentation Improvement (CDI)",
     desc: "Bridge the gap between clinical care and accurate documentation. Our CDI specialists work alongside your physicians to capture the complete severity of illness and complexity of care.",
     tag: "Documentation",
+    tagline: "Clinical clarity, captured at the source",
     image: "/images/cdi-documentation-card.jpg",
   },
   {
@@ -21,6 +24,7 @@ const services = [
     title: "Revenue Cycle Management",
     desc: "End-to-end RCM support — charge capture, claims submission, denial management, and AR follow-up — to reduce write-offs and accelerate collections for your practice or system.",
     tag: "RCM",
+    tagline: "From charge to collection, optimized",
     image: "/images/rcm-analytics-card.jpg",
   },
   {
@@ -28,13 +32,15 @@ const services = [
     title: "Risk Adjustment Coding (HCC)",
     desc: "Comprehensive Hierarchical Condition Category (HCC) coding for Medicare Advantage and value-based care programs. Capture accurate risk scores and ensure appropriate capitation payments.",
     tag: "Risk Adjustment",
+    tagline: "Accurate risk scores. Right payments.",
     image: "/images/risk-adjustment-card.jpg",
   },
   {
     icon: <Code2 size={20} className="text-[#22c55e]" />,
     title: "IT Services and Consulting",
-    desc: "Comprehensive IT consulting and services for healthcare and non-healthcare organizations. We deliver enterprise software engineering, cloud infrastructure management, data analytics, API development, and strategic technology consulting to optimize operations, enhance security, and drive digital transformation.",
+    desc: "End-to-end IT services and consulting covering custom application development, cloud and infrastructure management (AWS, Azure, GCP), enterprise software engineering, API and systems integration, data engineering and analytics, cybersecurity, DevOps automation, and managed support. Our consultants help organizations modernize legacy systems, design scalable architectures, and align technology investments with measurable business outcomes.",
     tag: "Technology",
+    tagline: "Engineering tomorrow's enterprise today",
     image: "/images/ehr-integration.jpg",
   },
   {
@@ -42,13 +48,15 @@ const services = [
     title: "Coding Audits & Compliance",
     desc: "Prospective and retrospective coding audits to identify errors, recover lost revenue, and mitigate compliance risk. Detailed reporting with actionable recommendations.",
     tag: "Compliance",
+    tagline: "Audit-grade integrity, every chart",
     image: "/images/compliance-audit.jpg",
   },
   {
     icon: <Headphones size={20} className="text-[#22c55e]" />,
     title: "Business Process Management (BPM)",
-    desc: "We focus on integrated end-to-end outsourcing delivering transformational benefits through reduced costs, improved productivity, and process optimization. Services include Google Mapping, Finance Services, Chat and Email Support, and Technical Support (networking, infrastructure setup, system maintenance). We serve US, UK, Australia, Europe, and Asia-Pacific regions.",
+    desc: "We as BPM focus on integrated end-to-end outsourcing and deliver transformational benefits to clients through reduced cost, improved productivity, and process improvement. Voice and non-voice services for US, UK, Australia and Europe — Google mapping, finance services, chat and email support, and technical support (networking, network setup, infrastructure).",
     tag: "BPM Services",
+    tagline: "End-to-end outsourcing, transformational outcomes",
     image: "/images/bpm-services-card.jpg",
   },
 ]
@@ -67,41 +75,64 @@ export default function Services() {
             We offer a comprehensive suite of medical coding and IT services tailored to the needs of
             hospitals, physician groups, payers, and health systems across India and beyond.
           </p>
+          <p className="mt-3 text-xs text-[#6b7280] italic">
+            Hover any card to reveal the full story.
+          </p>
         </div>
 
         {/* Cards grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((s) => (
-            <article
+          {services.map((s, i) => (
+            <FlipCard
               key={s.title}
-              className="group relative bg-[#111] border border-[#1e1e1e] rounded-xl overflow-hidden hover:border-[#22c55e]/40 transition-all duration-300 flex flex-col"
-            >
-              {/* Image thumbnail */}
-              {s.image && (
-                <div className="relative h-40 w-full overflow-hidden">
-                  <Image
-                    src={s.image}
-                    alt={s.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#111]" />
+              seed={s.title}
+              flipLeft={i % 2 === 1}
+              className="h-[460px]"
+              front={
+                <article className="relative w-full h-full bg-[#111] border border-[#1e1e1e] hover:border-[#22c55e]/40 transition-colors duration-300 flex flex-col">
+                  {/* Image thumbnail */}
+                  <div className="relative h-40 w-full overflow-hidden shrink-0">
+                    <Image
+                      src={s.image}
+                      alt={s.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#111]" />
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <span className="inline-block text-[10px] uppercase tracking-widest text-[#22c55e] bg-[#22c55e]/10 px-2.5 py-0.5 rounded-full mb-4 self-start">
+                      {s.tag}
+                    </span>
+                    <div className="w-10 h-10 rounded-lg bg-[#22c55e]/10 flex items-center justify-center mb-3">
+                      {s.icon}
+                    </div>
+                    <h3 className="text-base font-semibold text-white mb-2">{s.title}</h3>
+                    <p className="text-sm text-[#22c55e]/90 italic leading-relaxed">{s.tagline}</p>
+                    <div className="mt-auto pt-4 text-[11px] uppercase tracking-widest text-[#6b7280] flex items-center gap-1.5">
+                      Hover to reveal <span aria-hidden>↻</span>
+                    </div>
+                  </div>
+                </article>
+              }
+              back={
+                <div className="relative w-full h-full p-7 flex flex-col text-white">
+                  <span className="inline-block text-[10px] uppercase tracking-widest bg-white/15 backdrop-blur-sm px-2.5 py-0.5 rounded-full mb-4 self-start">
+                    {s.tag}
+                  </span>
+                  <h3 className="text-lg font-bold mb-3 drop-shadow-sm">{s.title}</h3>
+                  <p className="text-sm leading-relaxed text-white/95 overflow-y-auto pr-1 flex-1">
+                    {s.desc}
+                  </p>
+                  <a
+                    href="#contact"
+                    className="mt-4 inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-white text-[#0a0a0a] rounded-md hover:bg-white/90 transition-colors self-start"
+                  >
+                    Get in touch →
+                  </a>
                 </div>
-              )}
-
-              <div className="p-6 flex flex-col flex-1">
-                {/* Tag */}
-                <span className="inline-block text-[10px] uppercase tracking-widest text-[#22c55e] bg-[#22c55e]/10 px-2.5 py-0.5 rounded-full mb-4 self-start">
-                  {s.tag}
-                </span>
-                <div className="mb-3">{s.icon}</div>
-                <h3 className="text-base font-semibold text-white mb-2">{s.title}</h3>
-                <p className="text-sm text-[#9ca3af] leading-relaxed flex-1">{s.desc}</p>
-                <div className="mt-4 text-xs font-medium text-[#22c55e] flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                  Learn more →
-                </div>
-              </div>
-            </article>
+              }
+            />
           ))}
         </div>
       </div>

@@ -1,59 +1,69 @@
 import Image from "next/image"
-import { Building2, Stethoscope, HeartPulse, Briefcase, Globe, Code2, TrendingUp, Users, HeadsetIcon } from "lucide-react"
+import { Building2, Stethoscope, HeartPulse, Briefcase, Code2, TrendingUp, Users, HeadsetIcon, Workflow } from "lucide-react"
+import { FlipCard } from "@/components/ui/flip-card"
 
 const segments = [
   {
-    icon: <Building2 size={22} className="text-[#22c55e]" />,
+    icon: <Building2 size={22} />,
     title: "Hospitals & Health Systems",
+    tagline: "High-volume coding, seamless EHR flows",
     desc: "We support large health systems with high-volume inpatient and outpatient coding, CDI programs, and seamless EHR-integrated workflows that keep your revenue cycle moving.",
     href: "#contact",
   },
   {
-    icon: <Stethoscope size={22} className="text-[#22c55e]" />,
+    icon: <Stethoscope size={22} />,
     title: "Physician Groups & Clinics",
+    tagline: "Specialty coding from primary to subspecialty",
     desc: "Specialty-specific professional fee coding for single and multi-specialty groups — from primary care to cardiology, orthopedics, neurology, and more.",
     href: "#contact",
   },
   {
-    icon: <HeartPulse size={22} className="text-[#22c55e]" />,
+    icon: <HeartPulse size={22} />,
     title: "Health Plans & Payers",
+    tagline: "Accurate risk capture, optimized payments",
     desc: "Risk adjustment coding, HCC capture, and retrospective chart reviews to ensure your member risk scores are accurate and your capitation payments are optimized.",
     href: "#contact",
   },
   {
-    icon: <Briefcase size={22} className="text-[#22c55e]" />,
+    icon: <Briefcase size={22} />,
     title: "Revenue Cycle Companies",
+    tagline: "Scale without adding headcount",
     desc: "White-label and outsourced coding partnerships for RCM companies looking to scale capacity, reduce costs, and maintain quality without adding headcount.",
     href: "#contact",
   },
   {
-    icon: <Globe size={22} className="text-[#22c55e]" />,
-    title: "IT & Startups",
-    desc: "We partner with IT companies and startups to deliver comprehensive IT services and consulting. Our expertise includes enterprise software engineering, cloud infrastructure management, data analytics, EHR integrations, HL7/FHIR implementation, and strategic technology consulting to help scale operations and align technology with business objectives.",
-    href: "#contact",
-  },
-  {
-    icon: <Code2 size={22} className="text-[#22c55e]" />,
+    icon: <Code2 size={22} />,
     title: "IT Services and Consulting",
-    desc: "End-to-end IT consulting and services for organizations looking to modernize their infrastructure, optimize workflows, and implement enterprise solutions. We provide architecture design, implementation, and ongoing support.",
+    tagline: "Modernize. Integrate. Scale.",
+    desc: "End-to-end IT services and consulting — application development, cloud and infrastructure management, enterprise software engineering, API and systems integration, data analytics, cybersecurity, and managed support. Our consultants partner with you to design the right architecture, modernize legacy systems, and align technology investments with business outcomes.",
     href: "#contact",
   },
   {
-    icon: <TrendingUp size={22} className="text-[#22c55e]" />,
+    icon: <TrendingUp size={22} />,
     title: "Finance and Accounting",
+    tagline: "Books, reports, analytics — handled",
     desc: "Finance and accounting support services including bookkeeping, financial reporting, accounts payable/receivable, and business analytics to streamline your financial operations.",
     href: "#contact",
   },
   {
-    icon: <Users size={22} className="text-[#22c55e]" />,
+    icon: <Users size={22} />,
     title: "Human Resources",
+    tagline: "People operations, fully outsourced",
     desc: "HR support services including payroll processing, employee onboarding, benefits administration, compliance, and HR consulting to help your organization scale efficiently.",
     href: "#contact",
   },
   {
-    icon: <HeadsetIcon size={22} className="text-[#22c55e]" />,
+    icon: <HeadsetIcon size={22} />,
     title: "Customer Experience",
+    tagline: "Every channel. Every customer. Every time.",
     desc: "Multi-channel customer support solutions including chat, email, voice support, and customer success management to enhance client relationships and satisfaction.",
+    href: "#contact",
+  },
+  {
+    icon: <Workflow size={22} />,
+    title: "BPM (Business Process Management)",
+    tagline: "Integrated end-to-end outsourcing",
+    desc: "We as BPM focus on integrated end-to-end outsourcing and deliver transformational benefits to clients through reduced cost, improved productivity, and process improvement. Voice and non-voice services for US, UK, Australia and Europe — including Google mapping, finance services, chat and email support, and technical support (networking, network setup, infrastructure).",
     href: "#contact",
   },
 ]
@@ -66,11 +76,12 @@ export default function WhoWeServe() {
         <div className="text-center max-w-2xl mx-auto mb-14">
           <p className="text-xs uppercase tracking-[0.2em] text-[#22c55e] mb-3">Who We Serve</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 text-balance">
-            Serving the full spectrum of healthcare
+            Serving healthcare, IT, and global outsourcing
           </h2>
           <p className="text-[#9ca3af] leading-relaxed">
-            From large hospital networks to individual physician practices, Zyphercode brings the same
-            commitment to accuracy and compliance to every client we partner with.
+            From hospital networks and physician practices to IT enterprises and global BPM engagements,
+            Zyphercode brings the same commitment to accuracy, compliance, and transformational outcomes
+            to every client we partner with.
           </p>
         </div>
 
@@ -108,26 +119,43 @@ export default function WhoWeServe() {
 
         {/* Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {segments.map((seg) => (
-            <a
+          {segments.map((seg, i) => (
+            <FlipCard
               key={seg.title}
-              href={seg.href}
-              className="group bg-[#111] border border-[#1e1e1e] rounded-xl p-6 hover:border-[#22c55e]/40 transition-all duration-300 flex flex-col"
-            >
-              <div className="w-11 h-11 rounded-lg bg-[#22c55e]/10 flex items-center justify-center mb-4">
-                {seg.icon}
-              </div>
-              <h3 className="text-base font-semibold text-white mb-2">{seg.title}</h3>
-              <p className="text-sm text-[#9ca3af] leading-relaxed flex-1">{seg.desc}</p>
-              <p className="mt-4 text-xs font-medium text-[#22c55e]">
-                Read more{" "}
-                <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
-              </p>
-            </a>
+              seed={seg.title}
+              flipLeft={i % 3 === 1}
+              className="h-[300px]"
+              front={
+                <div className="w-full h-full bg-[#111] border border-[#1e1e1e] hover:border-[#22c55e]/40 transition-colors duration-300 p-6 flex flex-col">
+                  <div className="w-11 h-11 rounded-lg bg-[#22c55e]/10 flex items-center justify-center mb-4 text-[#22c55e]">
+                    {seg.icon}
+                  </div>
+                  <h3 className="text-base font-semibold text-white mb-2">{seg.title}</h3>
+                  <p className="text-sm text-[#22c55e]/90 italic leading-relaxed">{seg.tagline}</p>
+                  <div className="mt-auto pt-4 text-[11px] uppercase tracking-widest text-[#6b7280] flex items-center gap-1.5">
+                    Hover to reveal <span aria-hidden>↻</span>
+                  </div>
+                </div>
+              }
+              back={
+                <div className="w-full h-full p-6 flex flex-col text-white">
+                  <h3 className="text-base font-bold mb-3 drop-shadow-sm">{seg.title}</h3>
+                  <p className="text-sm leading-relaxed text-white/95 overflow-y-auto pr-1 flex-1">
+                    {seg.desc}
+                  </p>
+                  <a
+                    href={seg.href}
+                    className="mt-4 inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-white text-[#0a0a0a] rounded-md hover:bg-white/90 transition-colors self-start"
+                  >
+                    Contact us →
+                  </a>
+                </div>
+              }
+            />
           ))}
 
           {/* Network callout card */}
-          <div className="bg-[#22c55e]/5 border border-[#22c55e]/20 rounded-xl p-6 flex flex-col justify-between">
+          <div className="bg-[#22c55e]/5 border border-[#22c55e]/20 rounded-xl p-6 flex flex-col justify-between h-[300px]">
             <div>
               <p className="text-xs uppercase tracking-widest text-[#22c55e] mb-4">Our reach</p>
               <div className="space-y-4">

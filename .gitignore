@@ -14,3 +14,6 @@ node_modules
 .next/
 .DS_Store
 .vercel
+
+# Project uses pnpm (pnpm-lock.yaml). Ignore npm's lockfile to avoid resolver drift.
+package-lock.json

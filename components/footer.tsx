@@ -9,8 +9,11 @@ const footerLinks = [
       { label: "Hospitals & Health Systems", href: "#who-we-serve" },
       { label: "Physician Groups & Clinics", href: "#who-we-serve" },
       { label: "Health Plans & Payers", href: "#who-we-serve" },
-      { label: "Revenue Cycle Companies", href: "#who-we-serve" },
-      { label: "Healthcare IT & Startups", href: "#who-we-serve" },
+      { label: "IT Services and Consulting", href: "#who-we-serve" },
+      { label: "Finance and Accounting", href: "#who-we-serve" },
+      { label: "Human Resources", href: "#who-we-serve" },
+      { label: "Customer Experience", href: "#who-we-serve" },
+      { label: "BPM", href: "#who-we-serve" },
     ],
   },
   {
@@ -20,10 +23,8 @@ const footerLinks = [
       { label: "HCC / Risk Adjustment Coding", href: "#services" },
       { label: "Clinical Documentation (CDI)", href: "#services" },
       { label: "Revenue Cycle Management", href: "#services" },
-      { label: "IT Services", href: "#services" },
-      { label: "EHR Integration", href: "#services" },
-      // { label: "Coding Audits & Compliance", href: "#services" },
-      // { label: "Business Process Management (BPM)", href: "#services" },
+      { label: "IT Services and Consulting", href: "#services" },
+      { label: "Business Process Management (BPM)", href: "#services" },
     ],
   },
   {
@@ -56,7 +57,7 @@ export default function Footer() {
             </div>
 
             <p className="text-sm text-gray-600 leading-relaxed max-w-xs mb-5">
-              Zyphercode Private Limited focuses on integrated end-to-end outsourcing delivering transformational benefits to clients through reduced costs, improved productivity, and process improvement. We provide medical coding for healthcare organizations and IT services and consulting for IT organizations globally.
+              We as BPM focus on integrated end-to-end outsourcing and deliver transformational benefits to clients through reduced cost, improved productivity, and process improvement. Zyphercode provides medical coding for healthcare organizations and IT services and consulting for IT organizations globally.
             </p>
 
             {/* Contact info */}

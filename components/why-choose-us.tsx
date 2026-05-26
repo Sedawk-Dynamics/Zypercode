@@ -47,7 +47,7 @@ export default function WhyChooseUs() {
               Expert solutions for healthcare and IT organizations
             </h2>
             <p className="text-[#9ca3af] leading-relaxed mb-8">
-              Zyphercode Private Limited delivers specialized solutions: medical coding for healthcare organizations and integrated IT services and consulting for IT organizations. We combine clinical expertise, technology innovation, and process optimization to deliver accuracy, reliability, and transformational business impact. Founded in Hyderabad.
+              Zyphercode Private Limited delivers specialized solutions tailored to each sector — <span className="text-white font-medium">medical coding for healthcare organizations</span> and <span className="text-white font-medium">IT services and consulting for IT organizations</span>. We combine clinical expertise, technology innovation, and process optimization to deliver accuracy, reliability, and transformational business impact. Founded in Hyderabad.
             </p>
 
             {/* Pillars */}
