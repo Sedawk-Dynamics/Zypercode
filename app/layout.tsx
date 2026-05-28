@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 
@@ -25,6 +25,14 @@ export const metadata: Metadata = {
       'We as BPM focus on integrated end-to-end outsourcing and deliver transformational benefits to clients through reduced cost, improved productivity, and process improvement.',
     type: 'website',
   },
+  icons: {
+    icon: { url: '/logo.png', type: 'image/png' },
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
+}
+
+export const viewport: Viewport = {
   themeColor: '#0a0a0a',
 }
 

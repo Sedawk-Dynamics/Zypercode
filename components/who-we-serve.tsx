@@ -4,6 +4,7 @@ import { FlipCard } from "@/components/ui/flip-card"
 
 const segments = [
   {
+    id: "serve-hospitals",
     icon: <Building2 size={22} />,
     title: "Hospitals & Health Systems",
     tagline: "High-volume coding, seamless EHR flows",
@@ -11,6 +12,7 @@ const segments = [
     href: "#contact",
   },
   {
+    id: "serve-physicians",
     icon: <Stethoscope size={22} />,
     title: "Physician Groups & Clinics",
     tagline: "Specialty coding from primary to subspecialty",
@@ -18,6 +20,7 @@ const segments = [
     href: "#contact",
   },
   {
+    id: "serve-payers",
     icon: <HeartPulse size={22} />,
     title: "Health Plans & Payers",
     tagline: "Accurate risk capture, optimized payments",
@@ -25,6 +28,7 @@ const segments = [
     href: "#contact",
   },
   {
+    id: "serve-rcm",
     icon: <Briefcase size={22} />,
     title: "Revenue Cycle Companies",
     tagline: "Scale without adding headcount",
@@ -32,6 +36,7 @@ const segments = [
     href: "#contact",
   },
   {
+    id: "serve-it",
     icon: <Code2 size={22} />,
     title: "IT Services and Consulting",
     tagline: "Modernize. Integrate. Scale.",
@@ -39,6 +44,7 @@ const segments = [
     href: "#contact",
   },
   {
+    id: "serve-finance",
     icon: <TrendingUp size={22} />,
     title: "Finance and Accounting",
     tagline: "Books, reports, analytics — handled",
@@ -46,6 +52,7 @@ const segments = [
     href: "#contact",
   },
   {
+    id: "serve-hr",
     icon: <Users size={22} />,
     title: "Human Resources",
     tagline: "People operations, fully outsourced",
@@ -53,6 +60,7 @@ const segments = [
     href: "#contact",
   },
   {
+    id: "serve-cx",
     icon: <HeadsetIcon size={22} />,
     title: "Customer Experience",
     tagline: "Every channel. Every customer. Every time.",
@@ -60,6 +68,7 @@ const segments = [
     href: "#contact",
   },
   {
+    id: "serve-bpm",
     icon: <Workflow size={22} />,
     title: "BPM (Business Process Management)",
     tagline: "Integrated end-to-end outsourcing",
@@ -122,6 +131,7 @@ export default function WhoWeServe() {
           {segments.map((seg, i) => (
             <FlipCard
               key={seg.title}
+              id={seg.id}
               seed={seg.title}
               flipLeft={i % 3 === 1}
               className="h-[300px]"

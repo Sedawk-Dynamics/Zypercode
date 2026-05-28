@@ -17,3 +17,6 @@ node_modules
 
 # Project uses pnpm (pnpm-lock.yaml). Ignore npm's lockfile to avoid resolver drift.
 package-lock.json
+
+# TypeScript incremental build cache
+*.tsbuildinfo

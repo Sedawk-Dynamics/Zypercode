@@ -9,27 +9,24 @@ const navLinks = [
   {
     label: "Who We Serve",
     items: [
-      { label: "Hospitals & Health Systems", href: "#who-we-serve" },
-      { label: "Physician Groups", href: "#who-we-serve" },
-      { label: "Health Plans & Payers", href: "#who-we-serve" },
-      { label: "Revenue Cycle Management", href: "#who-we-serve" },
-      { label: "IT Services and Consulting", href: "#who-we-serve" },
-      { label: "Finance and Accounting", href: "#who-we-serve" },
-      { label: "Human Resources", href: "#who-we-serve" },
-      { label: "Customer Experience", href: "#who-we-serve" },
-      { label: "BPM", href: "#who-we-serve" },
+      { label: "Hospitals & Health Systems", href: "#serve-hospitals" },
+      { label: "Physician Groups & Clinics", href: "#serve-physicians" },
+      { label: "Health Plans & Payers", href: "#serve-payers" },
+      { label: "Revenue Cycle Companies", href: "#serve-rcm" },
+      { label: "IT Services and Consulting", href: "#serve-it" },
+      { label: "Finance and Accounting", href: "#serve-finance" },
+      { label: "Human Resources", href: "#serve-hr" },
+      { label: "Customer Experience", href: "#serve-cx" },
+      { label: "BPM", href: "#serve-bpm" },
     ],
   },
   {
     label: "Services",
     items: [
-      { label: "Medical Coding (ICD/CPT)", href: "#services" },
-      { label: "HCC / Risk Adjustment Coding", href: "#services" },
-      { label: "Clinical Documentation (CDI)", href: "#services" },
-      { label: "Revenue Cycle Management", href: "#services" },
-      { label: "IT Services and Consulting", href: "#services" },
-      { label: "Coding Audits & Compliance", href: "#services" },
-      { label: "Business Process Management (BPM)", href: "#services" },
+      { label: "Medical Coding (ICD/CPT)", href: "#service-coding" },
+      { label: "Clinical Documentation (CDI)", href: "#service-cdi" },
+      { label: "HCC / Risk Adjustment Coding", href: "#service-hcc" },
+      { label: "Coding Audits & Compliance", href: "#service-audits" },
     ],
   },
   { label: "About", href: "#about" },
@@ -88,16 +85,19 @@ export default function Navbar() {
                 </button>
 
                 {openDropdown === link.label && (
-                  <div className="absolute top-full left-0 w-80 bg-white border border-gray-200 rounded-xl shadow-lg py-2 mt-2">
-                    {link.items.map((item) => (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        className="block px-4 py-3 text-sm text-gray-600 hover:text-black hover:bg-gray-100 transition-colors"
-                      >
-                        {item.label}
-                      </a>
-                    ))}
+                  <div className="absolute top-full left-0 w-80 pt-2 z-50">
+                    <div className="bg-white border border-gray-200 rounded-xl shadow-lg py-2">
+                      {link.items.map((item) => (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          onClick={() => setOpenDropdown(null)}
+                          className="block px-4 py-3 text-sm text-gray-600 hover:text-black hover:bg-gray-100 transition-colors"
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

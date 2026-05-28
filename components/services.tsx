@@ -1,9 +1,10 @@
 import Image from "next/image"
-import { Code2, FileText, Brain, RefreshCcw, ShieldCheck, BarChart3, Headphones } from "lucide-react"
+import { FileText, Brain, ShieldCheck, BarChart3 } from "lucide-react"
 import { FlipCard } from "@/components/ui/flip-card"
 
 const services = [
   {
+    id: "service-coding",
     icon: <FileText size={20} className="text-[#22c55e]" />,
     title: "Medical Coding (ICD-10 / CPT / HCC)",
     desc: "Precise inpatient and outpatient coding across all specialties using the latest ICD-10-CM/PCS, CPT, and HCPCS code sets. Our AHIMA/AAPC-certified coders ensure maximum reimbursement with zero compliance risk.",
@@ -12,6 +13,7 @@ const services = [
     image: "/images/medical-coding-card.jpg",
   },
   {
+    id: "service-cdi",
     icon: <Brain size={20} className="text-[#22c55e]" />,
     title: "Clinical Documentation Improvement (CDI)",
     desc: "Bridge the gap between clinical care and accurate documentation. Our CDI specialists work alongside your physicians to capture the complete severity of illness and complexity of care.",
@@ -20,14 +22,7 @@ const services = [
     image: "/images/cdi-documentation-card.jpg",
   },
   {
-    icon: <RefreshCcw size={20} className="text-[#22c55e]" />,
-    title: "Revenue Cycle Management",
-    desc: "End-to-end RCM support — charge capture, claims submission, denial management, and AR follow-up — to reduce write-offs and accelerate collections for your practice or system.",
-    tag: "RCM",
-    tagline: "From charge to collection, optimized",
-    image: "/images/rcm-analytics-card.jpg",
-  },
-  {
+    id: "service-hcc",
     icon: <ShieldCheck size={20} className="text-[#22c55e]" />,
     title: "Risk Adjustment Coding (HCC)",
     desc: "Comprehensive Hierarchical Condition Category (HCC) coding for Medicare Advantage and value-based care programs. Capture accurate risk scores and ensure appropriate capitation payments.",
@@ -36,28 +31,13 @@ const services = [
     image: "/images/risk-adjustment-card.jpg",
   },
   {
-    icon: <Code2 size={20} className="text-[#22c55e]" />,
-    title: "IT Services and Consulting",
-    desc: "End-to-end IT services and consulting covering custom application development, cloud and infrastructure management (AWS, Azure, GCP), enterprise software engineering, API and systems integration, data engineering and analytics, cybersecurity, DevOps automation, and managed support. Our consultants help organizations modernize legacy systems, design scalable architectures, and align technology investments with measurable business outcomes.",
-    tag: "Technology",
-    tagline: "Engineering tomorrow's enterprise today",
-    image: "/images/ehr-integration.jpg",
-  },
-  {
+    id: "service-audits",
     icon: <BarChart3 size={20} className="text-[#22c55e]" />,
     title: "Coding Audits & Compliance",
     desc: "Prospective and retrospective coding audits to identify errors, recover lost revenue, and mitigate compliance risk. Detailed reporting with actionable recommendations.",
     tag: "Compliance",
     tagline: "Audit-grade integrity, every chart",
     image: "/images/compliance-audit.jpg",
-  },
-  {
-    icon: <Headphones size={20} className="text-[#22c55e]" />,
-    title: "Business Process Management (BPM)",
-    desc: "We as BPM focus on integrated end-to-end outsourcing and deliver transformational benefits to clients through reduced cost, improved productivity, and process improvement. Voice and non-voice services for US, UK, Australia and Europe — Google mapping, finance services, chat and email support, and technical support (networking, network setup, infrastructure).",
-    tag: "BPM Services",
-    tagline: "End-to-end outsourcing, transformational outcomes",
-    image: "/images/bpm-services-card.jpg",
   },
 ]
 
@@ -85,6 +65,7 @@ export default function Services() {
           {services.map((s, i) => (
             <FlipCard
               key={s.title}
+              id={s.id}
               seed={s.title}
               flipLeft={i % 2 === 1}
               className="h-[460px]"

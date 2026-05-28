@@ -1,30 +1,28 @@
 import Image from "next/image"
 import { Linkedin, Mail, MapPin, Phone, Instagram, Facebook } from "lucide-react"
-import { FaXTwitter } from "react-icons/fa6"
 
 const footerLinks = [
   {
     heading: "Who We Serve",
     links: [
-      { label: "Hospitals & Health Systems", href: "#who-we-serve" },
-      { label: "Physician Groups & Clinics", href: "#who-we-serve" },
-      { label: "Health Plans & Payers", href: "#who-we-serve" },
-      { label: "IT Services and Consulting", href: "#who-we-serve" },
-      { label: "Finance and Accounting", href: "#who-we-serve" },
-      { label: "Human Resources", href: "#who-we-serve" },
-      { label: "Customer Experience", href: "#who-we-serve" },
-      { label: "BPM", href: "#who-we-serve" },
+      { label: "Hospitals & Health Systems", href: "#serve-hospitals" },
+      { label: "Physician Groups & Clinics", href: "#serve-physicians" },
+      { label: "Health Plans & Payers", href: "#serve-payers" },
+      { label: "Revenue Cycle Companies", href: "#serve-rcm" },
+      { label: "IT Services and Consulting", href: "#serve-it" },
+      { label: "Finance and Accounting", href: "#serve-finance" },
+      { label: "Human Resources", href: "#serve-hr" },
+      { label: "Customer Experience", href: "#serve-cx" },
+      { label: "BPM", href: "#serve-bpm" },
     ],
   },
   {
     heading: "Services",
     links: [
-      { label: "Medical Coding (ICD/CPT)", href: "#services" },
-      { label: "HCC / Risk Adjustment Coding", href: "#services" },
-      { label: "Clinical Documentation (CDI)", href: "#services" },
-      { label: "Revenue Cycle Management", href: "#services" },
-      { label: "IT Services and Consulting", href: "#services" },
-      { label: "Business Process Management (BPM)", href: "#services" },
+      { label: "Medical Coding (ICD/CPT)", href: "#service-coding" },
+      { label: "Clinical Documentation (CDI)", href: "#service-cdi" },
+      { label: "HCC / Risk Adjustment Coding", href: "#service-hcc" },
+      { label: "Coding Audits & Compliance", href: "#service-audits" },
     ],
   },
   {
@@ -78,10 +76,10 @@ export default function Footer() {
                   className="text-[#22c55e] shrink-0"
                 />
                 <a
-                  href="mailto:Info@zyphercodepvtltd.com"
+                  href="mailto:info@zypher-code.com"
                   className="hover:text-black transition-colors"
                 >
-                  Info@zyphercodepvtltd.com
+                  info@zypher-code.com
                 </a>
               </div>
 
@@ -109,15 +107,6 @@ export default function Footer() {
                 className="w-9 h-9 rounded-lg border border-gray-300 flex items-center justify-center text-gray-500 hover:text-[#22c55e] hover:border-[#22c55e] transition-colors"
               >
                 <Instagram size={16} />
-              </a>
-              <a
-                href="https://x.com/zyphercode"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X (Twitter)"
-                className="w-9 h-9 rounded-lg border border-gray-300 flex items-center justify-center text-gray-500 hover:text-[#22c55e] hover:border-[#22c55e] transition-colors"
-              >
-                <FaXTwitter size={16} />
               </a>
               <a
                 href="https://www.linkedin.com/company/zypher-code-pvt-ltd/"

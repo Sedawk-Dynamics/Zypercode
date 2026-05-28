@@ -25,10 +25,10 @@ export default function CtaBanner() {
             <div className="bg-[#0a0a0a] border border-[#1e1e1e] rounded-xl p-5">
               <p className="text-xs text-[#6b7280] uppercase tracking-widest mb-1">Email</p>
               <a
-                href="mailto:Info@zyphercodepvtltd.com"
+                href="mailto:info@zypher-code.com"
                 className="text-sm text-[#22c55e] hover:underline break-all"
               >
-                Info@zyphercodepvtltd.com
+                info@zypher-code.com
               </a>
             </div>
             <div className="bg-[#0a0a0a] border border-[#1e1e1e] rounded-xl p-5">
@@ -49,7 +49,7 @@ export default function CtaBanner() {
           </div>
 
           <a
-            href="mailto:Info@zyphercodepvtltd.com"
+            href="mailto:info@zypher-code.com"
             className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold bg-[#22c55e] text-[#0a0a0a] rounded-md hover:bg-[#16a34a] transition-colors"
           >
             Contact Us →

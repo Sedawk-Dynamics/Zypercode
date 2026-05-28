@@ -77,6 +77,10 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Offset anchor targets so the fixed navbar (h-20) doesn't cover them */
+  :target {
+    scroll-margin-top: 7rem;
+  }
 }
 
 /* Green glow utility */
