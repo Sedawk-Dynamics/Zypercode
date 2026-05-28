@@ -6,27 +6,30 @@ import Link from "next/link"
 import { Menu, X, ChevronDown } from "lucide-react"
 
 const navLinks = [
+  { label: "Home", href: "/" },
   {
     label: "Who We Serve",
     items: [
-      { label: "Hospitals & Health Systems", href: "#serve-hospitals" },
-      { label: "Physician Groups & Clinics", href: "#serve-physicians" },
-      { label: "Health Plans & Payers", href: "#serve-payers" },
-      { label: "Revenue Cycle Companies", href: "#serve-rcm" },
-      { label: "IT Services and Consulting", href: "#serve-it" },
-      { label: "Finance and Accounting", href: "#serve-finance" },
-      { label: "Human Resources", href: "#serve-hr" },
-      { label: "Customer Experience", href: "#serve-cx" },
-      { label: "BPM", href: "#serve-bpm" },
+      { label: "Hospitals & Health Systems", href: "/who-we-serve/hospitals" },
+      { label: "Physician Groups & Clinics", href: "/who-we-serve/physician-groups" },
+      { label: "Health Plans & Payers", href: "/who-we-serve/health-plans-payers" },
+      { label: "Revenue Cycle Companies", href: "/who-we-serve/revenue-cycle-companies" },
+      { label: "IT Services and Consulting", href: "/who-we-serve/it-services-consulting" },
+      { label: "Finance and Accounting", href: "/who-we-serve/finance-accounting" },
+      { label: "Human Resources", href: "/who-we-serve/human-resources" },
+      { label: "Customer Experience", href: "/who-we-serve/customer-experience" },
+      { label: "BPM", href: "/who-we-serve/bpm" },
+      { label: "View all →", href: "/who-we-serve" },
     ],
   },
   {
     label: "Services",
     items: [
-      { label: "Medical Coding (ICD/CPT)", href: "#service-coding" },
-      { label: "Clinical Documentation (CDI)", href: "#service-cdi" },
-      { label: "HCC / Risk Adjustment Coding", href: "#service-hcc" },
-      { label: "Coding Audits & Compliance", href: "#service-audits" },
+      { label: "Medical Coding (ICD/CPT)", href: "/services/medical-coding" },
+      { label: "Clinical Documentation (CDI)", href: "/services/clinical-documentation-improvement" },
+      { label: "HCC / Risk Adjustment Coding", href: "/services/risk-adjustment" },
+      { label: "Coding Audits & Compliance", href: "/services/coding-audits" },
+      { label: "View all →", href: "/services" },
     ],
   },
   { label: "About", href: "/about" },
@@ -88,39 +91,39 @@ export default function Navbar() {
                   <div className="absolute top-full left-0 w-80 pt-2 z-50">
                     <div className="bg-white border border-gray-200 rounded-xl shadow-lg py-2">
                       {link.items.map((item) => (
-                        <a
+                        <Link
                           key={item.label}
                           href={item.href}
                           onClick={() => setOpenDropdown(null)}
                           className="block px-4 py-3 text-sm text-gray-600 hover:text-black hover:bg-gray-100 transition-colors"
                         >
                           {item.label}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 )}
               </div>
             ) : (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors"
               >
                 {link.label}
-              </a>
+              </Link>
             )
           )}
         </div>
 
         {/* CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <a
+          <Link
             href="/contact"
             className="px-5 py-2.5 text-sm font-medium bg-[#22c55e] text-white rounded-lg hover:bg-[#16a34a] transition-colors"
           >
             Get in Touch
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Burger */}
@@ -144,35 +147,35 @@ export default function Navbar() {
                 </p>
 
                 {link.items.map((item) => (
-                  <a
+                  <Link
                     key={item.label}
                     href={item.href}
                     className="block px-2 py-2.5 text-sm text-gray-700 hover:text-black transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             ) : (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="block px-2 py-3 text-sm text-gray-700 hover:text-black border-t border-gray-200 transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             )
           )}
 
-          <a
+          <Link
             href="/contact"
             className="mt-5 block w-full text-center py-3 text-sm font-medium bg-[#22c55e] text-white rounded-lg hover:bg-[#16a34a] transition-colors"
             onClick={() => setMobileOpen(false)}
           >
             Get in Touch
-          </a>
+          </Link>
         </div>
       )}
     </header>
