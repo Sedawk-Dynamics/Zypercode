@@ -105,7 +105,7 @@ export default function WhyChooseUs() {
               <div className="mt-7 pt-6 border-t border-[#1e1e1e]">
                 <p className="text-sm text-[#6b7280] mb-3">Ready to improve your coding accuracy?</p>
                 <a
-                  href="#contact"
+                  href="/services/coding-audits"
                   className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold bg-[#22c55e] text-[#0a0a0a] rounded-md hover:bg-[#16a34a] transition-colors"
                 >
                   Schedule a Free Audit →

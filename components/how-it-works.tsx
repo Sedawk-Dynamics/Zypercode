@@ -60,7 +60,7 @@ export default function HowItWorks() {
 
         <div className="mt-12 text-center">
           <a
-            href="#contact"
+            href="/how-it-works"
             className="inline-flex items-center gap-2 text-sm font-semibold text-[#22c55e] hover:text-[#86efac] transition-colors"
           >
             Start your onboarding today <ArrowRight size={15} />

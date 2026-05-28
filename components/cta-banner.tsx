@@ -49,7 +49,7 @@ export default function CtaBanner() {
           </div>
 
           <a
-            href="mailto:info@zypher-code.com"
+            href="/contact"
             className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold bg-[#22c55e] text-[#0a0a0a] rounded-md hover:bg-[#16a34a] transition-colors"
           >
             Contact Us →

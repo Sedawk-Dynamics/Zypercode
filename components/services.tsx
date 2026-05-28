@@ -1,45 +1,7 @@
 import Image from "next/image"
-import { FileText, Brain, ShieldCheck, BarChart3 } from "lucide-react"
+import Link from "next/link"
 import { FlipCard } from "@/components/ui/flip-card"
-
-const services = [
-  {
-    id: "service-coding",
-    icon: <FileText size={20} className="text-[#22c55e]" />,
-    title: "Medical Coding (ICD-10 / CPT / HCC)",
-    desc: "Precise inpatient and outpatient coding across all specialties using the latest ICD-10-CM/PCS, CPT, and HCPCS code sets. Our AHIMA/AAPC-certified coders ensure maximum reimbursement with zero compliance risk.",
-    tag: "Core Service",
-    tagline: "Certified accuracy across every claim",
-    image: "/images/medical-coding-card.jpg",
-  },
-  {
-    id: "service-cdi",
-    icon: <Brain size={20} className="text-[#22c55e]" />,
-    title: "Clinical Documentation Improvement (CDI)",
-    desc: "Bridge the gap between clinical care and accurate documentation. Our CDI specialists work alongside your physicians to capture the complete severity of illness and complexity of care.",
-    tag: "Documentation",
-    tagline: "Clinical clarity, captured at the source",
-    image: "/images/cdi-documentation-card.jpg",
-  },
-  {
-    id: "service-hcc",
-    icon: <ShieldCheck size={20} className="text-[#22c55e]" />,
-    title: "Risk Adjustment Coding (HCC)",
-    desc: "Comprehensive Hierarchical Condition Category (HCC) coding for Medicare Advantage and value-based care programs. Capture accurate risk scores and ensure appropriate capitation payments.",
-    tag: "Risk Adjustment",
-    tagline: "Accurate risk scores. Right payments.",
-    image: "/images/risk-adjustment-card.jpg",
-  },
-  {
-    id: "service-audits",
-    icon: <BarChart3 size={20} className="text-[#22c55e]" />,
-    title: "Coding Audits & Compliance",
-    desc: "Prospective and retrospective coding audits to identify errors, recover lost revenue, and mitigate compliance risk. Detailed reporting with actionable recommendations.",
-    tag: "Compliance",
-    tagline: "Audit-grade integrity, every chart",
-    image: "/images/compliance-audit.jpg",
-  },
-]
+import { services } from "@/lib/site-content"
 
 export default function Services() {
   return (
@@ -65,7 +27,7 @@ export default function Services() {
           {services.map((s, i) => (
             <FlipCard
               key={s.title}
-              id={s.id}
+              id={s.anchorId}
               seed={s.title}
               flipLeft={i % 2 === 1}
               className="h-[460px]"
@@ -74,7 +36,7 @@ export default function Services() {
                   {/* Image thumbnail */}
                   <div className="relative h-40 w-full overflow-hidden shrink-0">
                     <Image
-                      src={s.image}
+                      src={s.image!}
                       alt={s.title}
                       fill
                       className="object-cover"
@@ -86,7 +48,7 @@ export default function Services() {
                       {s.tag}
                     </span>
                     <div className="w-10 h-10 rounded-lg bg-[#22c55e]/10 flex items-center justify-center mb-3">
-                      {s.icon}
+                      <s.Icon size={20} className="text-[#22c55e]" />
                     </div>
                     <h3 className="text-base font-semibold text-white mb-2">{s.title}</h3>
                     <p className="text-sm text-[#22c55e]/90 italic leading-relaxed">{s.tagline}</p>
@@ -103,14 +65,14 @@ export default function Services() {
                   </span>
                   <h3 className="text-lg font-bold mb-3 drop-shadow-sm">{s.title}</h3>
                   <p className="text-sm leading-relaxed text-white/95 overflow-y-auto pr-1 flex-1">
-                    {s.desc}
+                    {s.shortDesc}
                   </p>
-                  <a
-                    href="#contact"
+                  <Link
+                    href={`/services/${s.slug}`}
                     className="mt-4 inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-white text-[#0a0a0a] rounded-md hover:bg-white/90 transition-colors self-start"
                   >
-                    Get in touch →
-                  </a>
+                    Learn more →
+                  </Link>
                 </div>
               }
             />

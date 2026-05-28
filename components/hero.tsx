@@ -41,14 +41,14 @@ export default function Hero() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-12">
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold bg-[#22c55e] text-[#0a0a0a] rounded-md hover:bg-[#16a34a] transition-colors"
               >
                 Partner With Us
                 <ArrowRight size={16} />
               </a>
               <a
-                href="#services"
+                href="/services"
                 className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold border border-[#333] text-[#d1d5db] rounded-md hover:border-[#22c55e]/50 hover:text-white transition-colors"
               >
                 Explore Services

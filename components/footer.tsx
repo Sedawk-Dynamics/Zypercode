@@ -28,10 +28,10 @@ const footerLinks = [
   {
     heading: "Company",
     links: [
-      { label: "About Zyphercode", href: "#about" },
-      { label: "How We Work", href: "#about" },
-      { label: "Careers", href: "#contact" },
-      { label: "Contact Us", href: "#contact" },
+      { label: "About Zyphercode", href: "/about" },
+      { label: "How We Work", href: "/how-it-works" },
+      { label: "Careers", href: "/careers" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
 ]
@@ -161,21 +161,21 @@ export default function Footer() {
 
           <div className="flex gap-5">
             <a
-              href="#"
+              href="/privacy"
               className="hover:text-black transition-colors"
             >
               Privacy Policy
             </a>
 
             <a
-              href="#"
+              href="/terms"
               className="hover:text-black transition-colors"
             >
               Terms of Service
             </a>
 
             <a
-              href="#contact"
+              href="/contact"
               className="hover:text-black transition-colors"
             >
               Contact

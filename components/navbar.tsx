@@ -29,8 +29,8 @@ const navLinks = [
       { label: "Coding Audits & Compliance", href: "#service-audits" },
     ],
   },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ]
 
 export default function Navbar() {
@@ -116,7 +116,7 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href="#contact"
+            href="/contact"
             className="px-5 py-2.5 text-sm font-medium bg-[#22c55e] text-white rounded-lg hover:bg-[#16a34a] transition-colors"
           >
             Get in Touch
@@ -167,7 +167,7 @@ export default function Navbar() {
           )}
 
           <a
-            href="#contact"
+            href="/contact"
             className="mt-5 block w-full text-center py-3 text-sm font-medium bg-[#22c55e] text-white rounded-lg hover:bg-[#16a34a] transition-colors"
             onClick={() => setMobileOpen(false)}
           >
