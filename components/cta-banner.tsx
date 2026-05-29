@@ -43,7 +43,7 @@ export default function CtaBanner() {
             <div className="bg-[#0a0a0a] border border-[#1e1e1e] rounded-xl p-5">
               <p className="text-xs text-[#6b7280] uppercase tracking-widest mb-1">Address</p>
               <p className="text-sm text-[#9ca3af] leading-relaxed">
-                7-1-309/53, BK Guda,<br />Hyderabad 500038
+                708, Radhe Nagar, Khajaguda,<br />Rai Durg, Hyderabad,<br />Telangana 500104
               </p>
             </div>
           </div>

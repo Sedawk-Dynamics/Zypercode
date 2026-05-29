@@ -66,7 +66,7 @@ export default function Footer() {
                   className="text-[#22c55e] mt-0.5 shrink-0"
                 />
                 <span>
-                  7-1-309/53, BK Guda, Hyderabad 500038, India
+                  708, Radhe Nagar, Khajaguda, Rai Durg, Hyderabad, Telangana 500104, India
                 </span>
               </div>
 
