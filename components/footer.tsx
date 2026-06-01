@@ -65,9 +65,14 @@ export default function Footer() {
                   size={14}
                   className="text-[#22c55e] mt-0.5 shrink-0"
                 />
-                <span>
-                  708, Radhe Nagar, Khajaguda, Rai Durg, Hyderabad, Telangana 500104, India
-                </span>
+                <a
+                  href="https://www.google.com/maps/place/Sandhya+Techno-1,+Cluster_malkajgiri+82,+X+Road,+Radhe+Nagar,+Khajaguda,+Rai+Durg,+Telangana+500104"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-black transition-colors leading-relaxed"
+                >
+                  Sandhya Techno-1, X Road, Radhe Nagar,<br />Khajaguda, Rai Durg, Hyderabad,<br />Telangana 500104, India
+                </a>
               </div>
 
               <div className="flex items-center gap-2 text-gray-600">
@@ -127,6 +132,26 @@ export default function Footer() {
                 <Facebook size={16} />
               </a>
             </div>
+
+            {/* Embedded map */}
+            <a
+              href="https://www.google.com/maps/place/Sandhya+Techno-1,+Cluster_malkajgiri+82,+X+Road,+Radhe+Nagar,+Khajaguda,+Rai+Durg,+Telangana+500104"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Zyphercode office location in Google Maps"
+              className="block mt-6 rounded-xl overflow-hidden border border-gray-200 hover:border-[#22c55e] transition-colors h-44 group relative"
+            >
+              <iframe
+                title="Zyphercode office location map"
+                src="https://maps.google.com/maps?q=Sandhya+Techno-1+Radhe+Nagar+Khajaguda+Rai+Durg+Hyderabad+Telangana+500104&ftid=0x3bcb952c002445db:0x77f39f2f052cfcf4&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                className="w-full h-full pointer-events-none"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <span className="absolute bottom-2 right-2 inline-flex items-center gap-1.5 text-[11px] font-medium bg-white/95 text-gray-700 px-2.5 py-1 rounded-md shadow-sm border border-gray-200 opacity-0 group-hover:opacity-100 transition-opacity">
+                Open in Maps →
+              </span>
+            </a>
           </div>
 
           {/* Link columns */}
