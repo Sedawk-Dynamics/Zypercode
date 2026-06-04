@@ -33,7 +33,7 @@ const details = [
     Icon: MapPin,
     label: "Office",
     value: "Sandhya Techno-1, X Road, Radhe Nagar, Khajaguda, Rai Durg, Hyderabad, Telangana 500104, India",
-    href: "https://www.google.com/maps/place/Sandhya+Techno-1/@17.4217455,78.3845025,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb952c002445db:0x77f39f2f052cfcf4!8m2!3d17.4217455!4d78.3845025",
+    href: "https://www.google.com/maps/place/Sandhya+Techno-1/@17.4217455,78.3845025,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb952c002445db:0x77f39f2f052cfcf4!8m2!3d17.4217455!4d78.3845025!16s%2Fg%2F11hj_xzwm4!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D",
   },
   {
     Icon: Clock,
@@ -111,15 +111,24 @@ export default function ContactPage() {
               </div>
 
               {/* Map */}
-              <div className="rounded-2xl overflow-hidden border border-[#1e1e1e] h-64">
+              <a
+                href="https://www.google.com/maps/place/Sandhya+Techno-1/@17.4217455,78.3845025,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb952c002445db:0x77f39f2f052cfcf4!8m2!3d17.4217455!4d78.3845025!16s%2Fg%2F11hj_xzwm4!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Zyphercode office location in Google Maps"
+                className="block rounded-2xl overflow-hidden border border-[#1e1e1e] hover:border-[#22c55e]/50 transition-colors h-64 group relative"
+              >
                 <iframe
                   title="Zyphercode office location"
                   src="https://maps.google.com/maps?q=17.4217455,78.3845025&z=17&ie=UTF8&iwloc=A&output=embed"
-                  className="w-full h-full grayscale-[0.2] contrast-110"
+                  className="w-full h-full grayscale-[0.2] contrast-110 pointer-events-none"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-              </div>
+                <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 text-xs font-medium bg-white/95 text-[#0a0a0a] px-3 py-1.5 rounded-md shadow-lg border border-white/30 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Open in Google Maps →
+                </span>
+              </a>
             </div>
           </div>
         </div>

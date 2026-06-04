@@ -66,7 +66,7 @@ export default function Footer() {
                   className="text-[#22c55e] mt-0.5 shrink-0"
                 />
                 <a
-                  href="https://www.google.com/maps/place/Sandhya+Techno-1/@17.4217455,78.3845025,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb952c002445db:0x77f39f2f052cfcf4!8m2!3d17.4217455!4d78.3845025"
+                  href="https://www.google.com/maps/place/Sandhya+Techno-1/@17.4217455,78.3845025,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb952c002445db:0x77f39f2f052cfcf4!8m2!3d17.4217455!4d78.3845025!16s%2Fg%2F11hj_xzwm4!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-black transition-colors leading-relaxed"
@@ -135,7 +135,7 @@ export default function Footer() {
 
             {/* Embedded map */}
             <a
-              href="https://www.google.com/maps/place/Sandhya+Techno-1/@17.4217455,78.3845025,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb952c002445db:0x77f39f2f052cfcf4!8m2!3d17.4217455!4d78.3845025"
+              href="https://www.google.com/maps/place/Sandhya+Techno-1/@17.4217455,78.3845025,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb952c002445db:0x77f39f2f052cfcf4!8m2!3d17.4217455!4d78.3845025!16s%2Fg%2F11hj_xzwm4!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Open Zyphercode office location in Google Maps"
