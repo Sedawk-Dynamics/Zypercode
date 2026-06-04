@@ -66,7 +66,7 @@ export default function Footer() {
                   className="text-[#22c55e] mt-0.5 shrink-0"
                 />
                 <a
-                  href="https://www.google.com/maps/place/Sandhya+Techno-1,+Cluster_malkajgiri+82,+X+Road,+Radhe+Nagar,+Khajaguda,+Rai+Durg,+Telangana+500104"
+                  href="https://www.google.com/maps/place/Sandhya+Techno-1/@17.4217455,78.3845025,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb952c002445db:0x77f39f2f052cfcf4!8m2!3d17.4217455!4d78.3845025"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-black transition-colors leading-relaxed"
@@ -135,7 +135,7 @@ export default function Footer() {
 
             {/* Embedded map */}
             <a
-              href="https://www.google.com/maps/place/Sandhya+Techno-1,+Cluster_malkajgiri+82,+X+Road,+Radhe+Nagar,+Khajaguda,+Rai+Durg,+Telangana+500104"
+              href="https://www.google.com/maps/place/Sandhya+Techno-1/@17.4217455,78.3845025,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb952c002445db:0x77f39f2f052cfcf4!8m2!3d17.4217455!4d78.3845025"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Open Zyphercode office location in Google Maps"
@@ -143,7 +143,7 @@ export default function Footer() {
             >
               <iframe
                 title="Zyphercode office location map"
-                src="https://maps.google.com/maps?q=Sandhya+Techno-1+Radhe+Nagar+Khajaguda+Rai+Durg+Hyderabad+Telangana+500104&ftid=0x3bcb952c002445db:0x77f39f2f052cfcf4&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=17.4217455,78.3845025&z=17&ie=UTF8&iwloc=A&output=embed"
                 className="w-full h-full pointer-events-none"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
