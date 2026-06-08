@@ -1,10 +1,19 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, ArrowUpRight, Check, ChevronRight } from "lucide-react"
+import { ArrowRight, ArrowUpRight, BadgeCheck, Check, ChevronRight } from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import JsonLd from "@/components/json-ld"
 import { pickGradient } from "@/lib/gradients"
-import { allContent, type CardContent, type Category } from "@/lib/site-content"
+import {
+  allContent,
+  getCrossLinks,
+  getFaqs,
+  getPageSeo,
+  type CardContent,
+  type Category,
+} from "@/lib/site-content"
+import { breadcrumbLd, faqLd, serviceLd } from "@/lib/seo"
 
 const CATEGORY_LABEL: Record<Category, string> = {
   services: "Services",
@@ -15,12 +24,34 @@ export default function DetailPage({ content }: { content: CardContent }) {
   const gradient = pickGradient(content.title)
   const { Icon } = content
   const categoryHref = `/${content.category}`
+  const categoryLabel = CATEGORY_LABEL[content.category]
+  const path = `/${content.category}/${content.slug}`
+  const seo = getPageSeo(content.slug)
+  const faqs = getFaqs(content)
+  const crossLinks = getCrossLinks(content.slug)
   const related = allContent.filter(
     (c) => c.category === content.category && c.slug !== content.slug,
   )
 
+  // Structured data: BreadcrumbList + Service (+ FAQPage when FAQs exist).
+  const jsonLd = [
+    breadcrumbLd([
+      { name: "Home", path: "/" },
+      { name: categoryLabel, path: categoryHref },
+      { name: content.title, path },
+    ]),
+    serviceLd({
+      serviceType: seo?.serviceType ?? content.title,
+      description: seo?.description ?? content.intro,
+      path,
+      areaServed: seo?.areaServed,
+    }),
+    ...(faqs.length ? [faqLd(faqs)] : []),
+  ]
+
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
+      <JsonLd data={jsonLd} />
       <Navbar />
 
       {/* ── Hero ─────────────────────────────────────────── */}
@@ -64,6 +95,16 @@ export default function DetailPage({ content }: { content: CardContent }) {
               </h1>
               <p className="text-lg text-[#d1d5db] leading-relaxed max-w-2xl">{content.intro}</p>
 
+              {seo?.medicallyReviewed && (
+                <p className="mt-5 inline-flex items-start gap-2 text-xs text-[#9ca3af] max-w-2xl">
+                  <BadgeCheck size={14} className="text-[#22c55e] shrink-0 mt-0.5" />
+                  <span>
+                    Reviewed for clinical and coding accuracy by Zyphercode&rsquo;s AHIMA- and
+                    AAPC-certified coding leadership.
+                  </span>
+                </p>
+              )}
+
               <div className="flex flex-col sm:flex-row gap-4 mt-9">
                 <Link
                   href="/contact"
@@ -84,7 +125,15 @@ export default function DetailPage({ content }: { content: CardContent }) {
             <div className="relative">
               {content.image ? (
                 <div className="relative h-72 rounded-2xl overflow-hidden border border-[#1e1e1e]">
-                  <Image src={content.image} alt={content.title} fill className="object-cover" />
+                  <Image
+                    src={content.image}
+                    alt={seo?.imageAlt ?? content.title}
+                    fill
+                    priority
+                    fetchPriority="high"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover"
+                  />
                   <div className="absolute inset-0" style={{ background: gradient, opacity: 0.28 }} />
                   <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
                 </div>
@@ -214,13 +263,13 @@ export default function DetailPage({ content }: { content: CardContent }) {
       )}
 
       {/* ── FAQ (optional) ───────────────────────────────── */}
-      {content.faqs && (
+      {faqs.length > 0 && (
         <section className="py-20 bg-[#0a0a0a]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-xs uppercase tracking-[0.2em] text-[#22c55e] mb-3">FAQ</p>
             <h2 className="text-3xl font-bold text-white mb-8 text-balance">Common questions</h2>
             <div className="space-y-4">
-              {content.faqs.map((f) => (
+              {faqs.map((f) => (
                 <div key={f.q} className="bg-[#111] border border-[#1e1e1e] rounded-xl p-6">
                   <h3 className="text-base font-semibold text-white mb-2">{f.q}</h3>
                   <p className="text-sm text-[#9ca3af] leading-relaxed">{f.a}</p>
@@ -253,6 +302,29 @@ export default function DetailPage({ content }: { content: CardContent }) {
           </div>
         </div>
       </section>
+
+      {/* ── Cross-silo links (topical interlinking) ──────── */}
+      {crossLinks.length > 0 && (
+        <section className="pt-6 pb-10 bg-[#0a0a0a]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#22c55e] mb-6">
+              {content.category === "services" ? "Industries we serve with this" : "Related services"}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {crossLinks.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="inline-flex items-center gap-2 bg-[#111] border border-[#1e1e1e] rounded-lg px-4 py-2.5 text-sm font-medium text-[#d1d5db] hover:border-[#22c55e]/40 hover:text-white transition-colors"
+                >
+                  {l.title}
+                  <ArrowUpRight size={14} className="text-[#22c55e] shrink-0" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Continue exploring ───────────────────────────── */}
       <section className="pb-24 bg-[#0a0a0a]">

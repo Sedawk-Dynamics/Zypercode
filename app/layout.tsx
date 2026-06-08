@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
+import JsonLd from '@/components/json-ld'
+import { SITE, organizationLd, websiteLd } from '@/lib/seo'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,24 +17,70 @@ const plusJakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Zyphercode Private Limited | Medical Coding, IT Services & BPM',
-  description:
-    'We as BPM focus on integrated end-to-end outsourcing and deliver transformational benefits to clients through reduced cost, improved productivity, and process improvement. Zyphercode provides medical coding for healthcare organizations and IT services and consulting for IT organizations globally.',
-  keywords: 'medical coding, IT services and consulting, BPM, business process management, healthcare coding, finance and accounting, HR services, customer experience, Hyderabad, Zyphercode',
+  // metadataBase lets Next resolve every relative canonical/OG URL to the
+  // absolute www + https host — without it, OG/canonical tags break.
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: 'Medical Coding & IT Services Company | Zyphercode',
+    template: '%s | Zyphercode',
+  },
+  description: SITE.description,
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: `${SITE.url}/` }],
+  creator: SITE.name,
+  publisher: SITE.name,
+  keywords: [
+    'medical coding',
+    'medical coding outsourcing India',
+    'ICD-10 CPT HCC coding',
+    'clinical documentation improvement',
+    'HCC risk adjustment coding',
+    'coding audits and compliance',
+    'IT services and consulting',
+    'BPM services Hyderabad',
+    'Zyphercode',
+  ],
+  alternates: {
+    canonical: '/',
+    languages: { en: '/', 'x-default': '/' },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+    'max-video-preview': -1,
+  },
   openGraph: {
-    title: 'Zyphercode Private Limited | Medical Coding, IT Services & BPM',
-    description:
-      'We as BPM focus on integrated end-to-end outsourcing and deliver transformational benefits to clients through reduced cost, improved productivity, and process improvement.',
     type: 'website',
+    url: `${SITE.url}/`,
+    siteName: SITE.name,
+    locale: SITE.locale,
+    title: 'Medical Coding & IT Services Company | Zyphercode',
+    description: SITE.description,
+    images: [{ url: SITE.defaultOgImage, width: 1200, height: 630, alt: SITE.name }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Medical Coding & IT Services Company | Zyphercode',
+    description: SITE.description,
+    images: [SITE.defaultOgImage],
+  },
+  manifest: '/manifest.webmanifest',
   icons: {
-    icon: { url: '/logo.png', type: 'image/png' },
-    shortcut: '/logo.png',
-    apple: '/logo.png',
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-light-32x32.png', type: 'image/png', sizes: '32x32' },
+    ],
+    shortcut: '/icon-light-32x32.png',
+    apple: [{ url: '/apple-icon.png', sizes: '180x180' }],
   },
+  formatDetection: { telephone: true, address: true, email: true },
 }
 
 export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
   themeColor: '#0a0a0a',
 }
 
@@ -43,7 +91,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable} bg-background`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {/* Sitewide structured data: Organization + WebSite */}
+        <JsonLd data={[organizationLd(), websiteLd()]} />
+        {children}
+      </body>
     </html>
   )
 }

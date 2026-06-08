@@ -8,18 +8,30 @@ import {
 } from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import JsonLd from "@/components/json-ld"
 import { pickGradient } from "@/lib/gradients"
+import { abs, breadcrumbLd, ORG_ID, pageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "About Zyphercode | Medical Coding, IT Services & BPM",
+export const metadata: Metadata = pageMetadata({
+  title: "About Zyphercode | Medical Coding & IT Services",
   description:
-    "Zyphercode Private Limited delivers medical coding for healthcare organizations, IT services and consulting for IT organizations, and integrated end-to-end BPM. Founded in Hyderabad.",
-  openGraph: {
-    title: "About Zyphercode | Medical Coding, IT Services & BPM",
-    description: "Who we are, what we do, and why organizations partner with Zyphercode.",
-    type: "website",
+    "Zyphercode is a Hyderabad-based medical coding, IT services & BPM company — AHIMA/AAPC-certified, HIPAA-compliant, 99%+ accuracy. Meet our certified team.",
+  path: "/about",
+})
+
+const aboutJsonLd = [
+  breadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Zyphercode Private Limited",
+    url: abs("/about"),
+    mainEntity: { "@id": ORG_ID },
   },
-}
+]
 
 const gradient = pickGradient("About Zyphercode")
 
@@ -57,6 +69,7 @@ const stats = [
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
+      <JsonLd data={aboutJsonLd} />
       <Navbar />
 
       {/* Hero */}
@@ -105,7 +118,13 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative rounded-2xl overflow-hidden border border-[#1e1e1e] h-80">
-              <Image src="/images/about-team.jpg" alt="The Zyphercode team in Hyderabad" fill className="object-cover" />
+              <Image
+                src="/images/about-team.jpg"
+                alt="Zyphercode's AHIMA/AAPC-certified medical coding and IT team in Hyderabad"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
               <div aria-hidden className="absolute inset-0" style={{ background: gradient, opacity: 0.18 }} />
               <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
               <div className="absolute bottom-5 left-5">

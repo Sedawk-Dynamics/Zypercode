@@ -4,17 +4,30 @@ import { Mail, Phone, MapPin, Clock, ChevronRight } from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import ContactForm from "@/components/contact-form"
+import JsonLd from "@/components/json-ld"
+import { abs, breadcrumbLd, localBusinessLd, ORG_ID, pageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "Contact Us | Zyphercode Private Limited",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact Zyphercode | Medical Coding & IT",
   description:
-    "Get in touch with Zyphercode for medical coding, IT services and consulting, and BPM. Tell us about your goals and we'll respond within one business day.",
-  openGraph: {
-    title: "Contact Us | Zyphercode Private Limited",
-    description: "Reach Zyphercode for medical coding, IT services, and BPM engagements.",
-    type: "website",
+    "Contact Zyphercode for medical coding, IT services & BPM. AHIMA/AAPC-certified, HIPAA-compliant. Tell us your goals — we reply within one business day.",
+  path: "/contact",
+})
+
+const contactJsonLd = [
+  breadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "Contact", path: "/contact" },
+  ]),
+  localBusinessLd(),
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Zyphercode Private Limited",
+    url: abs("/contact"),
+    mainEntity: { "@id": ORG_ID },
   },
-}
+]
 
 const details = [
   {
@@ -45,6 +58,7 @@ const details = [
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
+      <JsonLd data={contactJsonLd} />
       <Navbar />
 
       {/* Hero */}

@@ -3,18 +3,21 @@ import Link from "next/link"
 import { ChevronRight, ArrowRight, Check, Layers, Repeat, ClipboardList } from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import JsonLd from "@/components/json-ld"
 import { pickGradient } from "@/lib/gradients"
+import { breadcrumbLd, pageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "How We Work | Zyphercode Private Limited",
+export const metadata: Metadata = pageMetadata({
+  title: "How We Work: Our Engagement Model | Zyphercode",
   description:
-    "Our four-step engagement model — onboarding & assessment, dedicated team setup, execution & quality review, and reporting & optimization — designed for a smooth start and consistent results.",
-  openGraph: {
-    title: "How We Work | Zyphercode Private Limited",
-    description: "A simple, transparent, and proven engagement model.",
-    type: "website",
-  },
-}
+    "Zyphercode's four-step engagement model — onboarding & assessment, dedicated team, execution with dual-layer QA, and reporting. Live within 48 hours. Learn more.",
+  path: "/how-it-works",
+})
+
+const howItWorksJsonLd = breadcrumbLd([
+  { name: "Home", path: "/" },
+  { name: "How We Work", path: "/how-it-works" },
+])
 
 const gradient = pickGradient("How We Work")
 
@@ -54,6 +57,7 @@ const models = [
 export default function HowItWorksPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
+      <JsonLd data={howItWorksJsonLd} />
       <Navbar />
 
       {/* Hero */}

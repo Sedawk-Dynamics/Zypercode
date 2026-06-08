@@ -1,14 +1,25 @@
 import type { Metadata } from "next"
 import LegalPage from "@/components/legal-page"
+import JsonLd from "@/components/json-ld"
+import { breadcrumbLd, pageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "Terms of Service | Zyphercode Private Limited",
-  description: "The terms that govern your use of the Zyphercode website and services.",
-}
+export const metadata: Metadata = pageMetadata({
+  title: "Terms of Service | Zyphercode",
+  description:
+    "The terms that govern your use of the Zyphercode Private Limited website and services, including intellectual property, confidentiality, and governing law.",
+  path: "/terms",
+})
+
+const termsJsonLd = breadcrumbLd([
+  { name: "Home", path: "/" },
+  { name: "Terms of Service", path: "/terms" },
+])
 
 export default function TermsPage() {
   return (
-    <LegalPage
+    <>
+      <JsonLd data={termsJsonLd} />
+      <LegalPage
       title="Terms of Service"
       updated="May 28, 2026"
       intro="These terms govern your use of the Zyphercode Private Limited website. By accessing or using this site, you agree to them."
@@ -57,6 +68,7 @@ export default function TermsPage() {
           ],
         },
       ]}
-    />
+      />
+    </>
   )
 }

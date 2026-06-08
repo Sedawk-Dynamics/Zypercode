@@ -543,3 +543,228 @@ export function getContent(category: Category, slug: string): CardContent | unde
 export function getSlugs(category: Category): { slug: string }[] {
   return allContent.filter((c) => c.category === category).map((c) => ({ slug: c.slug }))
 }
+
+// ─────────────────────────────────────────────────────────────
+// SEO LAYER
+// Per-page title/description/schema metadata, supplemental FAQs, and
+// cross-silo internal links. Kept in keyed maps (by unique slug) so the
+// content arrays above stay untouched and the SEO data is easy to audit.
+// ─────────────────────────────────────────────────────────────
+
+export interface PageSeo {
+  /** Full <title> with brand, front-loaded primary keyword, ≤60 chars. */
+  title: string
+  /** Meta description, 140–160 chars: primary keyword + trust hook + soft CTA. */
+  description: string
+  /** schema.org Service serviceType for the Service JSON-LD block. */
+  serviceType: string
+  /** Override the default areaServed (IN/US/GB/AU/EU) where the market is narrower. */
+  areaServed?: string[]
+  /** Descriptive, context-aware alt text for the detail hero image. */
+  imageAlt?: string
+  /** True for pages making clinical/coding accuracy claims → shows a reviewer line. */
+  medicallyReviewed?: boolean
+}
+
+export const pageSeo: Record<string, PageSeo> = {
+  // ── Services ──────────────────────────────────────────────
+  "medical-coding": {
+    title: "Medical Coding Services (ICD-10/CPT/HCC) | Zyphercode",
+    description:
+      "Outpatient & inpatient medical coding in ICD-10-CM/PCS, CPT & HCPCS by AAPC/AHIMA-certified coders. 99%+ accuracy, 24–48h TAT, HIPAA-secure. Get a free audit.",
+    serviceType: "Medical Coding (ICD-10 / CPT / HCC)",
+    areaServed: ["IN", "US", "GB", "AU"],
+    imageAlt: "Certified medical coder reviewing ICD-10 and CPT codes on patient charts",
+    medicallyReviewed: true,
+  },
+  "clinical-documentation-improvement": {
+    title: "Clinical Documentation Improvement (CDI) | Zyphercode",
+    description:
+      "CDI services that capture true severity of illness via compliant physician queries — lift CMI, cut denials, strengthen records. AHIMA/ACDIS-aligned. Talk to us.",
+    serviceType: "Clinical Documentation Improvement (CDI)",
+    areaServed: ["IN", "US", "GB", "AU"],
+    imageAlt: "CDI specialist reviewing clinical documentation to capture severity of illness",
+    medicallyReviewed: true,
+  },
+  "risk-adjustment": {
+    title: "HCC Risk Adjustment Coding Services | Zyphercode",
+    description:
+      "CRC-certified HCC risk adjustment coding for Medicare Advantage & value-based care — accurate RAF scores, RADV-ready, 99%+ accuracy. Contact our coding team.",
+    serviceType: "HCC Risk Adjustment Coding",
+    areaServed: ["US", "IN"],
+    imageAlt: "Risk adjustment coder analyzing HCC diagnoses for Medicare Advantage RAF scores",
+    medicallyReviewed: true,
+  },
+  "coding-audits": {
+    title: "Medical Coding Audit & Compliance | Zyphercode",
+    description:
+      "Independent retrospective & prospective coding audits that recover revenue and reduce compliance risk. Scorecards, root-cause findings, AAPC-certified. Book now.",
+    serviceType: "Medical Coding Audit & Compliance",
+    areaServed: ["IN", "US", "GB", "AU"],
+    imageAlt: "Auditor performing a medical coding compliance and revenue-recovery review",
+    medicallyReviewed: true,
+  },
+  // ── Who We Serve ──────────────────────────────────────────
+  hospitals: {
+    title: "Medical Coding for Hospitals & Health Systems | Zyphercode",
+    description:
+      "High-volume inpatient & outpatient medical coding and CDI for hospitals, integrated with Epic, Cerner & Meditech. 99%+ accuracy, HIPAA-compliant. Talk to us.",
+    serviceType: "Medical Coding & CDI for Hospitals",
+    medicallyReviewed: true,
+  },
+  "physician-groups": {
+    title: "Physician Group Coding Services | Zyphercode",
+    description:
+      "Specialty-specific professional-fee coding for physician groups & clinics — current E/M expertise, fewer denials, 99%+ accuracy, AAPC-certified. Get in touch.",
+    serviceType: "Physician Group & Specialty Coding",
+    medicallyReviewed: true,
+  },
+  "health-plans-payers": {
+    title: "Risk Adjustment for Health Plans & Payers | Zyphercode",
+    description:
+      "HCC capture and retrospective chart review for health plans — accurate RAF scores, RADV-ready, CRC-certified, HIPAA-compliant. Optimize payments; contact us.",
+    serviceType: "Risk Adjustment & HCC Capture for Payers",
+    areaServed: ["US", "IN"],
+    medicallyReviewed: true,
+  },
+  "revenue-cycle-companies": {
+    title: "White-Label Coding for RCM Companies | Zyphercode",
+    description:
+      "White-label, outsourced medical coding for RCM companies — scale capacity, protect margins, dual-layer QA, 99%+ accuracy SLA. Grow without hiring; talk to us.",
+    serviceType: "White-Label Medical Coding for RCM Companies",
+    medicallyReviewed: true,
+  },
+  "it-services-consulting": {
+    title: "IT Services & Consulting | Zyphercode",
+    description:
+      "IT services & consulting: app development, cloud & infrastructure, systems integration, data, and cybersecurity. Modernize with senior engineering talent. Contact us.",
+    serviceType: "IT Services & Consulting",
+  },
+  "finance-accounting": {
+    title: "Finance & Accounting Outsourcing | Zyphercode",
+    description:
+      "Finance & accounting outsourcing — bookkeeping, AP/AR, financial reporting, and analytics. Accurate books, faster close, lower cost. Streamline ops; talk to us.",
+    serviceType: "Finance & Accounting Outsourcing",
+  },
+  "human-resources": {
+    title: "HR Outsourcing & Payroll Services | Zyphercode",
+    description:
+      "HR outsourcing — payroll, onboarding, benefits administration, compliance, and HR consulting. Scale your workforce with less overhead. Get in touch with our team.",
+    serviceType: "HR Outsourcing & Payroll Services",
+  },
+  "customer-experience": {
+    title: "Customer Experience Outsourcing | Zyphercode",
+    description:
+      "Multi-channel customer experience outsourcing across chat, email, and voice — on-brand agents, higher CSAT, flexible coverage. Elevate support; contact us.",
+    serviceType: "Customer Experience Outsourcing",
+  },
+  bpm: {
+    title: "Business Process Management (BPM) Services | Zyphercode",
+    description:
+      "Integrated end-to-end BPM — voice & non-voice outsourcing for the US, UK, Australia & Europe. Lower cost, higher productivity, continuous improvement. Talk to us.",
+    serviceType: "Business Process Management (BPM)",
+    areaServed: ["US", "GB", "AU", "EU"],
+  },
+}
+
+// Supplemental / expanded FAQ sets (3–6 Q&As) for major pages. Every answer
+// is drawn from facts already stated elsewhere on the site — nothing invented.
+export const pageFaqs: Record<string, { q: string; a: string }[]> = {
+  "medical-coding": [
+    { q: "Which certifications do your medical coders hold?", a: "Our coders hold AHIMA (RHIA, CCS) and AAPC (CPC, CRC) credentials, matched to the specialty they code." },
+    { q: "What is your medical coding accuracy rate?", a: "Every chart passes a dual-layer review — a certified primary coder followed by a senior auditor — delivering 99%+ coding accuracy and a high first-pass clean-claim rate." },
+    { q: "How fast is your medical coding turnaround?", a: "Standard turnaround is 24–48 hours, with flexible capacity to clear backlogs and absorb seasonal volume without missing SLAs." },
+    { q: "Do you code both inpatient and outpatient claims?", a: "Yes. We handle facility (inpatient and outpatient) and professional-fee coding across 15+ specialties using current ICD-10-CM/PCS, CPT, and HCPCS guidelines." },
+    { q: "Are your coding workflows HIPAA-compliant?", a: "Yes. Charts are exchanged through your EHR or our HIPAA-compliant portal, with encryption, role-based access, and full audit trails." },
+    { q: "How quickly can you onboard?", a: "Most engagements are live within 48 hours, including secure access setup and workflow alignment." },
+  ],
+  "clinical-documentation-improvement": [
+    { q: "What is clinical documentation improvement (CDI)?", a: "CDI is the concurrent and retrospective review of medical records to ensure documentation accurately reflects the patient's severity of illness, complexity of care, and the services provided." },
+    { q: "Are your physician queries compliant?", a: "Yes. Our specialists issue non-leading, AHIMA/ACDIS-compliant queries that strengthen the record without steering the clinician toward a specific diagnosis." },
+    { q: "How does CDI improve reimbursement?", a: "By capturing accurate severity of illness and risk of mortality, CDI lifts the case mix index, improves quality scores, and reduces clinical-validation and DRG denials." },
+    { q: "Do you offer concurrent and retrospective review?", a: "Yes. We provide concurrent review while the patient is in-house and retrospective review, tailored to your program and specialties." },
+  ],
+  "risk-adjustment": [
+    { q: "What is HCC risk adjustment coding?", a: "HCC (Hierarchical Condition Category) coding captures chronic and serious diagnoses to calculate a patient's risk score (RAF), which determines appropriate reimbursement under Medicare Advantage and value-based care programs." },
+    { q: "Are your risk adjustment coders CRC-certified?", a: "Yes. Our risk-adjustment specialists are AAPC CRC-certified and trained on both the CMS-HCC and HHS-HCC models." },
+    { q: "Can you support RADV audits?", a: "Yes. Our documentation and coding are RADV audit-ready, designed to withstand CMS validation reviews." },
+    { q: "What types of chart review do you offer?", a: "We run prospective, concurrent, and retrospective chart reviews, plus suspect and gap analytics to recapture chronic conditions year over year." },
+  ],
+  "coding-audits": [
+    { q: "What is a medical coding audit?", a: "A coding audit is an independent, evidence-based review of coding accuracy, documentation support, and compliance — identifying both under-coding that costs revenue and over-coding that creates exposure." },
+    { q: "Do you offer prospective and retrospective audits?", a: "Yes. We perform pre-bill (prospective) and post-bill (retrospective) audits scoped to your specialties and highest-risk areas." },
+    { q: "What do we receive after an audit?", a: "Each engagement ends with a clear scorecard, root-cause findings, and a prioritized remediation plan, plus optional coder education so improvements stick." },
+    { q: "Can an audit help with payer or CMS reviews?", a: "Yes. Audits reduce exposure to payer takebacks and OIG focus areas and prepare your team to stand up confidently to payer or CMS scrutiny." },
+  ],
+  hospitals: [
+    { q: "Do you integrate with our EHR?", a: "Yes. Our certified coders work inside Epic, Cerner, Meditech, and other systems, fitting into your existing EHR-driven workflows." },
+    { q: "Can you handle high inpatient and outpatient volume?", a: "Yes. We provide facility and professional coding capacity that flexes with your census, as overflow support or full outsourcing." },
+    { q: "How do you prevent coding backlogs and DNFB spikes?", a: "Scalable, specialty-matched teams and 24–48h turnaround keep coding current, lifting clean-claim and first-pass rates while preventing DNFB spikes." },
+  ],
+  "health-plans-payers": [
+    { q: "What is HCC capture for health plans?", a: "HCC capture is the complete, compliant coding of members' chronic and serious conditions across the CMS-HCC and HHS-HCC models so RAF scores reflect true member acuity." },
+    { q: "Are your chart reviews RADV-ready?", a: "Yes. Our retrospective and prospective reviews are documented to withstand CMS RADV validation audits." },
+    { q: "Can you scale for AEP and sweeps?", a: "Yes. We provide high-volume retrospective and prospective review capacity on demand for AEP and sweep periods." },
+  ],
+}
+
+// Cross-silo internal links (descriptive, keyword-rich anchors) keyed by slug.
+// Services link out to the industries they serve and vice-versa, building the
+// Hospitals ↔ Medical Coding ↔ CDI ↔ Audits topical silo.
+export const crossLinks: Record<string, { category: Category; slug: string }[]> = {
+  "medical-coding": [
+    { category: "who-we-serve", slug: "hospitals" },
+    { category: "who-we-serve", slug: "physician-groups" },
+    { category: "who-we-serve", slug: "health-plans-payers" },
+  ],
+  "clinical-documentation-improvement": [
+    { category: "who-we-serve", slug: "hospitals" },
+    { category: "who-we-serve", slug: "physician-groups" },
+  ],
+  "risk-adjustment": [
+    { category: "who-we-serve", slug: "health-plans-payers" },
+    { category: "who-we-serve", slug: "physician-groups" },
+  ],
+  "coding-audits": [
+    { category: "who-we-serve", slug: "hospitals" },
+    { category: "who-we-serve", slug: "health-plans-payers" },
+    { category: "who-we-serve", slug: "revenue-cycle-companies" },
+  ],
+  hospitals: [
+    { category: "services", slug: "medical-coding" },
+    { category: "services", slug: "clinical-documentation-improvement" },
+    { category: "services", slug: "coding-audits" },
+  ],
+  "physician-groups": [
+    { category: "services", slug: "medical-coding" },
+    { category: "services", slug: "risk-adjustment" },
+    { category: "services", slug: "coding-audits" },
+  ],
+  "health-plans-payers": [
+    { category: "services", slug: "risk-adjustment" },
+    { category: "services", slug: "coding-audits" },
+  ],
+  "revenue-cycle-companies": [
+    { category: "services", slug: "medical-coding" },
+    { category: "services", slug: "coding-audits" },
+  ],
+}
+
+export function getPageSeo(slug: string): PageSeo | undefined {
+  return pageSeo[slug]
+}
+
+/** Expanded FAQ set if defined, otherwise the inline FAQs on the content item. */
+export function getFaqs(content: CardContent): { q: string; a: string }[] {
+  return pageFaqs[content.slug] ?? content.faqs ?? []
+}
+
+/** Resolve cross-silo links to { title, href } using the canonical content titles. */
+export function getCrossLinks(slug: string): { title: string; href: string }[] {
+  return (crossLinks[slug] ?? [])
+    .map(({ category, slug: target }) => {
+      const item = getContent(category, target)
+      return item ? { title: item.title, href: `/${category}/${target}` } : null
+    })
+    .filter((x): x is { title: string; href: string } => x !== null)
+}

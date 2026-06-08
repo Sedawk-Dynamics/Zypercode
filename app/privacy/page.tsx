@@ -1,14 +1,25 @@
 import type { Metadata } from "next"
 import LegalPage from "@/components/legal-page"
+import JsonLd from "@/components/json-ld"
+import { breadcrumbLd, pageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Zyphercode Private Limited",
-  description: "How Zyphercode Private Limited collects, uses, and protects your information.",
-}
+export const metadata: Metadata = pageMetadata({
+  title: "Privacy Policy | Zyphercode",
+  description:
+    "How Zyphercode Private Limited collects, uses, and protects your information, including HIPAA-compliant handling of protected health information (PHI).",
+  path: "/privacy",
+})
+
+const privacyJsonLd = breadcrumbLd([
+  { name: "Home", path: "/" },
+  { name: "Privacy Policy", path: "/privacy" },
+])
 
 export default function PrivacyPage() {
   return (
-    <LegalPage
+    <>
+      <JsonLd data={privacyJsonLd} />
+      <LegalPage
       title="Privacy Policy"
       updated="May 28, 2026"
       intro="Zyphercode Private Limited respects your privacy. This policy explains what information we collect, how we use it, and the choices you have."
@@ -58,6 +69,7 @@ export default function PrivacyPage() {
           ],
         },
       ]}
-    />
+      />
+    </>
   )
 }

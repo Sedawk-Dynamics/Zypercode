@@ -3,18 +3,21 @@ import Link from "next/link"
 import { ChevronRight, ArrowRight, GraduationCap, HeartHandshake, TrendingUp, Globe, MapPin } from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import JsonLd from "@/components/json-ld"
 import { pickGradient } from "@/lib/gradients"
+import { breadcrumbLd, pageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
-  title: "Careers | Zyphercode Private Limited",
+export const metadata: Metadata = pageMetadata({
+  title: "Careers at Zyphercode | Coding, IT & BPM Jobs",
   description:
-    "Join Zyphercode — build a career in medical coding, IT services, and BPM. Explore our culture, benefits, and open roles in Hyderabad and remote.",
-  openGraph: {
-    title: "Careers | Zyphercode Private Limited",
-    description: "Grow your career in medical coding, IT services, and BPM with Zyphercode.",
-    type: "website",
-  },
-}
+    "Build a career at Zyphercode in medical coding, IT services & BPM. Sponsored AHIMA/AAPC certifications, real growth, Hyderabad & remote roles. Apply today.",
+  path: "/careers",
+})
+
+const careersJsonLd = breadcrumbLd([
+  { name: "Home", path: "/" },
+  { name: "Careers", path: "/careers" },
+])
 
 const gradient = pickGradient("Careers")
 
@@ -37,6 +40,7 @@ const roles = [
 export default function CareersPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
+      <JsonLd data={careersJsonLd} />
       <Navbar />
 
       {/* Hero */}

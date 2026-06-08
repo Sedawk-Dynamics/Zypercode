@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import DetailPage from "@/components/detail-page"
-import { getContent, getSlugs } from "@/lib/site-content"
+import { getContent, getSlugs, getPageSeo } from "@/lib/site-content"
+import { pageMetadata } from "@/lib/seo"
 
 export function generateStaticParams() {
   return getSlugs("services")
@@ -12,12 +13,17 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = await params
   const content = getContent("services", slug)
-  if (!content) return { title: "Service | Zyphercode" }
-  return {
-    title: `${content.title} | Zyphercode`,
-    description: content.intro,
-    openGraph: { title: `${content.title} | Zyphercode`, description: content.intro, type: "website" },
+  if (!content) {
+    return { title: "Service Not Found | Zyphercode", robots: { index: false, follow: false } }
   }
+  const seo = getPageSeo(slug)
+  return pageMetadata({
+    title: seo?.title ?? `${content.title} | Zyphercode`,
+    description: seo?.description ?? content.intro,
+    path: `/services/${slug}`,
+    image: content.image,
+    imageAlt: seo?.imageAlt ?? content.title,
+  })
 }
 
 export default async function ServiceDetailPage(

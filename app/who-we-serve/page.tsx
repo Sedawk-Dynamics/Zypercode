@@ -1,24 +1,36 @@
 import type { Metadata } from "next"
 import CategoryIndex from "@/components/category-index"
+import JsonLd from "@/components/json-ld"
+import { breadcrumbLd, itemListLd, pageMetadata } from "@/lib/seo"
+import { segments } from "@/lib/site-content"
 
-export const metadata: Metadata = {
-  title: "Who We Serve | Zyphercode Private Limited",
+export const metadata: Metadata = pageMetadata({
+  title: "Who We Serve: Hospitals, Payers & RCM | Zyphercode",
   description:
-    "Zyphercode serves hospitals, physician groups, payers, RCM companies, IT organizations, and global BPM clients across healthcare, technology, and outsourcing.",
-  openGraph: {
-    title: "Who We Serve | Zyphercode Private Limited",
-    description: "Healthcare, IT, finance, HR, customer experience, and BPM — who we partner with.",
-    type: "website",
-  },
-}
+    "Zyphercode partners with hospitals, physician groups, health plans, and RCM companies for certified, HIPAA-compliant medical coding and BPM. See how we help.",
+  path: "/who-we-serve",
+})
 
 export default function WhoWeServeIndexPage() {
+  const jsonLd = [
+    breadcrumbLd([
+      { name: "Home", path: "/" },
+      { name: "Who We Serve", path: "/who-we-serve" },
+    ]),
+    itemListLd(
+      "Industries & Teams Zyphercode Serves",
+      segments.map((s) => ({ name: s.title, path: `/who-we-serve/${s.slug}` })),
+    ),
+  ]
   return (
-    <CategoryIndex
-      category="who-we-serve"
-      eyebrow="Who We Serve"
-      title="Serving healthcare, IT, and global outsourcing"
-      intro="From hospital networks and physician practices to IT enterprises and global BPM engagements, explore the industries and teams we partner with — and how we deliver for each."
-    />
+    <>
+      <JsonLd data={jsonLd} />
+      <CategoryIndex
+        category="who-we-serve"
+        eyebrow="Who We Serve"
+        title="Serving healthcare, IT, and global outsourcing"
+        intro="From hospital networks and physician practices to IT enterprises and global BPM engagements, explore the industries and teams we partner with — and how we deliver for each."
+      />
+    </>
   )
 }
