@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   // absolute www + https host — without it, OG/canonical tags break.
   metadataBase: new URL(SITE.url),
   title: {
-    default: 'Medical Coding & IT Services Company | Zyphercode',
+    default: 'IT Services, BPO & Healthcare Solutions | Zyphercode',
     template: '%s | Zyphercode',
   },
   description: SITE.description,
@@ -30,14 +30,15 @@ export const metadata: Metadata = {
   creator: SITE.name,
   publisher: SITE.name,
   keywords: [
+    'IT services and consulting',
+    'BPO and BPM services',
+    'BPM services Hyderabad',
+    'healthcare services outsourcing',
     'medical coding',
-    'medical coding outsourcing India',
     'ICD-10 CPT HCC coding',
     'clinical documentation improvement',
     'HCC risk adjustment coding',
     'coding audits and compliance',
-    'IT services and consulting',
-    'BPM services Hyderabad',
     'Zyphercode',
   ],
   alternates: {
@@ -56,13 +57,13 @@ export const metadata: Metadata = {
     url: `${SITE.url}/`,
     siteName: SITE.name,
     locale: SITE.locale,
-    title: 'Medical Coding & IT Services Company | Zyphercode',
+    title: 'IT Services, BPO & Healthcare Solutions | Zyphercode',
     description: SITE.description,
     images: [{ url: SITE.defaultOgImage, width: 1200, height: 630, alt: SITE.name }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Medical Coding & IT Services Company | Zyphercode',
+    title: 'IT Services, BPO & Healthcare Solutions | Zyphercode',
     description: SITE.description,
     images: [SITE.defaultOgImage],
   },

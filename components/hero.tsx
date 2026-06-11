@@ -33,9 +33,9 @@ export default function Hero() {
 
             {/* Subheadline */}
             <p className="text-lg text-[#9ca3af] leading-relaxed mb-10 text-pretty">
-              Zyphercode Private Limited delivers expert medical coding, clinical documentation improvement,
-              and IT services — helping healthcare organizations maximize revenue, ensure compliance, and
-              improve patient outcomes.
+              Zyphercode Private Limited delivers IT services &amp; consulting, BPO/BPM operations, and
+              healthcare services — including expert medical coding and clinical documentation improvement —
+              helping organizations boost efficiency, ensure compliance, and drive measurable growth.
             </p>
 
             {/* CTAs */}

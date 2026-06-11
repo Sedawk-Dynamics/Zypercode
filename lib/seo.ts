@@ -12,19 +12,16 @@ export const SITE = {
   name: "Zyphercode Private Limited",
   shortName: "Zyphercode",
   description:
-    "Zyphercode delivers HIPAA-compliant medical coding (ICD-10/CPT/HCC), CDI, risk adjustment, and coding audits, plus IT services and BPM for clients in India, the US, UK, Australia, and Europe.",
+    "Zyphercode delivers IT services and consulting, BPO/BPM operations, and healthcare services — including HIPAA-compliant medical coding, CDI, and risk adjustment — for clients in India, the US, UK, Australia, and Europe.",
   locale: "en_US",
   email: "info@zypher-code.com",
   telephone: "+91-6302234570",
   // NOTE: no purpose-built 1200×630 OG image exists yet — see recommendations.
   defaultOgImage: "/logo-horizontal.png",
-  // NAP must match the visible site (footer + contact page). The SEO brief
-  // listed "Sandhya Techno-1, X Road, Radhe Nagar, Khajaguda, Rai Durg" — the
-  // live footer/contact show "708, Radhe Nagar, Khajaguda, Rai Durg". Using the
-  // visible address here for consistency. >>> OWNER: confirm the single
-  // canonical street address and keep it identical on the Google Business Profile.
+  // NAP must match the visible site (footer + contact page) exactly — this is
+  // the single canonical address. Keep it identical on the Google Business Profile.
   address: {
-    streetAddress: "708, Radhe Nagar, Khajaguda, Rai Durg",
+    streetAddress: "708, Sandhya Techno-1, Radhe Nagar, Khajaguda, Rai Durga",
     addressLocality: "Hyderabad",
     addressRegion: "Telangana",
     postalCode: "500104",

@@ -71,7 +71,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-black transition-colors leading-relaxed"
                 >
-                  708, Radhe Nagar, Khajaguda,<br />Rai Durg, Hyderabad,<br />Telangana-500104
+                  708, Sandhya Techno-1, Radhe Nagar,<br />Khajaguda, Rai Durga, Hyderabad,<br />Telangana - 500104
                 </a>
               </div>
 

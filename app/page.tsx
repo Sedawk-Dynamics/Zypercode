@@ -11,9 +11,9 @@ import Footer from "@/components/footer"
 import { pageMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = pageMetadata({
-  title: "Medical Coding & IT Services Company | Zyphercode",
+  title: "IT Services, BPO & Healthcare Solutions | Zyphercode",
   description:
-    "HIPAA-compliant medical coding (ICD-10/CPT/HCC), CDI, risk adjustment, plus IT services & BPM. AHIMA/AAPC-certified, 99%+ accuracy. Get a free coding audit.",
+    "Zyphercode delivers IT services & consulting, BPO/BPM operations, and healthcare services — including HIPAA-compliant medical coding, CDI & risk adjustment. Get a free consultation.",
   path: "/",
 })
 
